@@ -1,14 +1,27 @@
 #include <stdio.h>
-#include <iostream>
-#include <Windows.h>
+
+template <typename T>
+
+T Recursive(T n) {
+	
+	if (n <= 1) {
+		return (100);
+	}
+
+	return (Recursive(n - 1) * 2) - 50;
+}
 
 int main() {
 
-	printf("ああああ");
 
-	//SetConsoleOutputCP(65001);
-	//char str[] = "おおおお";
-	//printf("%s", str);
+	int hour = 9;
+	int result = Recursive<int>(hour);
+
+	int normal = 1072 * hour;
+	
+	printf("%d\n", result);
+	printf("%d\n", normal);
+
 
 	return 0;
 }
