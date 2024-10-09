@@ -24,9 +24,9 @@ void DispResult(int* answer) {
 	int Dice;
 	unsigned int currentTime = time(nullptr);
 	srand(currentTime);
-	Dice = rand()%2 + 1;
+	Dice = rand()%6 + 1;
 
-	printf("%d\n", Dice);
+	printf("ダイス %d\n", Dice);
 
 	int result{};
 	if (Dice == 1 || Dice == 3 || Dice == 5) {
@@ -37,7 +37,7 @@ void DispResult(int* answer) {
 
 	if (Dice == 2 || Dice == 4 || Dice == 6) {
 		//result = char("偶数");
-		//result = 2;
+		result = 2;
 	}
 
 
@@ -56,6 +56,10 @@ void setTimeout(PFunc p,int second,int answer) {
 }
 
 int main(void) {
+
+	const char* a  = "偶数";
+
+	printf("%s\n", a);
 
 	int answer;
 	scanf_s("%d",&answer);
