@@ -1,26 +1,91 @@
 #include <stdio.h>
+#include <windows.h>
 
-template <typename T>
-
-T Recursive(T n) {
-	
-	if (n <= 1) {
-		return (100);
-	}
-
-	return (Recursive(n - 1) * 2) - 50;
+#include <time.h>
+int add(int a,int b) {
+	return a + b;
 }
 
-int main() {
+int sub(int a, int b) {
+	return a - b;
+}
+
+void Game(void) {
+	printf("Start\n");
+}
+
+typedef void (*PFunc)(int*);
+
+void DispResult(int* answer) {
 
 
-	int hour = 9;
-	int result = Recursive<int>(hour);
-
-	int normal = 1072 * hour;
+	printf("answer %c\n", *answer);
 	
-	printf("%d\n", result);
-	printf("%d\n", normal);
+	int Dice;
+	unsigned int currentTime = time(nullptr);
+	srand(currentTime);
+	Dice = rand()%2 + 1;
+
+	printf("%d\n", Dice);
+
+	int result{};
+	if (Dice == 1 || Dice == 3 || Dice == 5) {
+		//result = char ("奇数");
+		result = 1;
+
+	}
+
+	if (Dice == 2 || Dice == 4 || Dice == 6) {
+		//result = char("偶数");
+		//result = 2;
+	}
+
+
+	if (*answer == result) {
+		printf("正解\n");
+	}
+	else {
+		printf("不正解\n");
+	}
+
+}
+
+void setTimeout(PFunc p,int second,int answer) {
+	Sleep(second * 1000);
+	p(&answer);
+}
+
+int main(void) {
+
+	int answer;
+	scanf_s("%d",&answer);
+
+
+	void (*pfunc)();
+	pfunc = Game;
+	pfunc();
+
+	PFunc p;
+	p = DispResult;
+	setTimeout(p, 3,answer);
+
+
+
+	//printf("%p\n", Game);
+	//printf("%p\n", *pfunc);
+
+
+
+	//int l = 114;
+	//int h = 514;
+
+	//int (*calc)(int, int);
+
+	//calc = add;
+	//printf("%d\n", calc(l,h));
+
+	//calc = sub;
+	//printf("%d\n", calc(l, h));
 
 
 	return 0;
