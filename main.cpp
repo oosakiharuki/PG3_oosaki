@@ -14,34 +14,29 @@ void Game(void) {
 	printf("Start\n");
 }
 
-typedef void (*PFunc)(int*);
+typedef void (*PFunc)(char);
 
-void DispResult(int* answer) {
+void DispResult(char answer) {
 
 
-	printf("answer %c\n", *answer);
-	
 	int Dice;
 	unsigned int currentTime = time(nullptr);
 	srand(currentTime);
 	Dice = rand()%6 + 1;
 
-	printf("ダイス %d\n", Dice);
+	printf("結果 %d\n", Dice);
 
-	int result{};
+	char result{};
 	if (Dice == 1 || Dice == 3 || Dice == 5) {
-		//result = char ("奇数");
-		result = 1;
-
+		result = *"奇数";
 	}
 
 	if (Dice == 2 || Dice == 4 || Dice == 6) {
-		//result = char("偶数");
-		result = 2;
+		result = *"偶数";
 	}
 
 
-	if (*answer == result) {
+	if (answer == result) {
 		printf("正解\n");
 	}
 	else {
@@ -50,19 +45,18 @@ void DispResult(int* answer) {
 
 }
 
-void setTimeout(PFunc p,int second,int answer) {
+void setTimeout(PFunc p,int second,char answer) {
 	Sleep(second * 1000);
-	p(&answer);
+	p(answer);
 }
 
 int main(void) {
 
-	const char* a  = "偶数";
+	printf("[奇数]もしくは、[偶数]を入力してください\n");
 
-	printf("%s\n", a);
-
-	int answer;
-	scanf_s("%d",&answer);
+	char answer;
+	answer = getchar();
+	scanf_s("%c", &answer);
 
 
 	void (*pfunc)();
