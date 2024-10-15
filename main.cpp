@@ -2,13 +2,9 @@
 #include <windows.h>
 
 #include <time.h>
-int add(int a,int b) {
-	return a + b;
-}
+#include <functional>
 
-int sub(int a, int b) {
-	return a - b;
-}
+using namespace std;
 
 void Game(void) {
 	printf("Start\n");
@@ -51,12 +47,16 @@ void setTimeout(PFunc p,int second,char answer) {
 }
 
 int main(void) {
-
+	
 	printf("[奇数]もしくは、[偶数]を入力してください\n");
-
+	
 	char answer;
 	answer = getchar();
-	scanf_s("%c", &answer);
+	
+	function<void()> fx = [&answer]() {
+		scanf_s("%c", &answer);
+	};
+	fx();
 
 
 	void (*pfunc)();
@@ -71,20 +71,7 @@ int main(void) {
 
 	//printf("%p\n", Game);
 	//printf("%p\n", *pfunc);
-
-
-
-	//int l = 114;
-	//int h = 514;
-
-	//int (*calc)(int, int);
-
-	//calc = add;
-	//printf("%d\n", calc(l,h));
-
-	//calc = sub;
-	//printf("%d\n", calc(l, h));
-
+	//printf("oosaki_haruki");
 
 	return 0;
 }
