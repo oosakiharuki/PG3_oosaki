@@ -1,7 +1,7 @@
 #pragma once
 #include "Enemy.h"
 
-class Suraimu : public Enemy{
+class Suraimu : public IEnemy{
 public:
 	Suraimu();
 	~Suraimu()override;

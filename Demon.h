@@ -1,7 +1,7 @@
 #pragma once
 #include "Enemy.h"
 
-class Demon : public Enemy{
+class Demon : public IEnemy{
 public:
 	Demon();
 	~Demon()override;

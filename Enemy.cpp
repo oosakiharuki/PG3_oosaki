@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
-Enemy::Enemy() {}
+//Enemy::Enemy() {}
 
-Enemy::~Enemy() {}
+IEnemy::~IEnemy() {}
 
-void Enemy::Attack() {}
+void IEnemy::Attack() {}

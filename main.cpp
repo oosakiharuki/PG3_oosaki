@@ -5,7 +5,7 @@
 
 int main(void) {
 
-	Enemy* enemies[3];
+	IEnemy* enemies[3];
 	for (int i = 0; i < 3; i++) {
 		if (i == 0) {
 			enemies[i] = new Demon;
@@ -24,7 +24,7 @@ int main(void) {
 	printf("\n");
 
 	for (int i = 0; i < 3; i++) {
-		enemies[i]->~Enemy();
+		enemies[i]->~IEnemy();
 	}
 
 	return 0;

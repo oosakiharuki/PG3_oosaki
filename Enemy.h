@@ -1,11 +1,11 @@
 #pragma once
 #include <stdio.h>
 
-class Enemy {
+class IEnemy {
 public:
-	Enemy();
-	virtual ~Enemy();
-	virtual void Attack();	
+	//Enemy();
+	virtual ~IEnemy() = 0;
+	virtual void Attack() = 0;	
 protected:
 	const char* name;
 };
