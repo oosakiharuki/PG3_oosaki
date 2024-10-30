@@ -1,46 +1,31 @@
 #include <stdio.h>
-
 #include "Enemy.h"
-
-using namespace std;
-
-template<typename T1, typename T2>
-class Min {
-public:
-	T1 numA;
-	T2 numB;
-
-	Min(T1 numberA, T2 numberB) :numA(numberA), numB(numberB) {}
-
-	T1 Size() {
-		if (numA > numB) {
-			return static_cast<T1> (numA);
-		}
-		else {
-			return static_cast<T1> (numB);
-		}
-	}
-};
-
+#include "Suraimu.h"
+#include "Demon.h"
 
 int main(void) {
 
-	Min<int, int> answerA(1, 2);
-	Min<float, float> answerB(4.5f, 4.2f);
-	Min<double, double> answerC(1.0, 1.2);
+	Enemy* enemies[3];
+	for (int i = 0; i < 3; i++) {
+		if (i == 0) {
+			enemies[i] = new Demon;
+		}
+		else {
+			enemies[i] = new Suraimu;
+		}
+	}
 
-	printf("%d\n", answerA.Size());
-	printf("%0.1f\n", answerB.Size());
-	printf("%0.1f\n", answerC.Size());
+	printf("\n");
 
+	for (int i = 0; i < 3; i++) {
+		enemies[i]->Attack();
+	}
 
-	Min<float, int> answerD(23.4f, 23);//intは最初(numA)にするべからず
-	Min<float, double> answerE(20.01f, 20.05);
-	Min<double, int> answerF(10.99, 11);
+	printf("\n");
 
-	printf("%0.1f\n", answerD.Size());
-	printf("%0.2f\n", answerE.Size());
-	printf("%0.1f\n", answerF.Size());
+	for (int i = 0; i < 3; i++) {
+		enemies[i]->~Enemy();
+	}
 
 	return 0;
 }
