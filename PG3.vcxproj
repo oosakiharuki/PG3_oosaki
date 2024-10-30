@@ -129,21 +129,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
-    <ClCompile Include="Demon.cpp" />
-    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="main.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/source-charset:utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="Rectangle.cpp" />
-    <ClCompile Include="Suraimu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
-    <ClInclude Include="Demon.h" />
-    <ClInclude Include="Enemy.h" />
     <ClInclude Include="IShape.h" />
     <ClInclude Include="Rectangle.h" />
-    <ClInclude Include="Suraimu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
