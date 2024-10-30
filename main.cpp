@@ -1,30 +1,30 @@
 #include <stdio.h>
-#include "Enemy.h"
-#include "Suraimu.h"
-#include "Demon.h"
+#include "IShape.h"
+#include "Circle.h"
+#include "Rectangle.h"
 
 int main(void) {
 
-	IEnemy* enemies[3];
-	for (int i = 0; i < 3; i++) {
+	IShape* shape[2];
+	for (int i = 0; i < 2; i++) {
 		if (i == 0) {
-			enemies[i] = new Demon;
+			shape[i] = new Circle;
 		}
 		else {
-			enemies[i] = new Suraimu;
+			shape[i] = new Rectangle;
 		}
 	}
 
-	printf("\n");
+	printf("円の半径:5\n短形の底辺:2\n短形の高さ:4\n");
 
-	for (int i = 0; i < 3; i++) {
-		enemies[i]->Attack();
+	for (int i = 0; i < 2; i++) {
+		shape[i]->Size();
 	}
 
 	printf("\n");
 
-	for (int i = 0; i < 3; i++) {
-		enemies[i]->~IEnemy();
+	for (int i = 0; i < 2; i++) {
+		shape[i]->Draw();
 	}
 
 	return 0;
