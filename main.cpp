@@ -1,56 +1,33 @@
 #include <stdio.h>
 #include <string>
-#include <thread>
-#include <functional>
+#include <chrono>
 #include <iostream>
-
-bool a = false;
-bool b = false;
-bool x = false;
-
-void thread1() {	
-	printf("thread1\n");
-	a = true;
-}
-
-void thread2() {
-	while (!a) {
-		if (a) {		
-			break;
-		}
-		else {
-			continue;
-		}
-	}	
-	printf("thread2\n");		
-	b = true;
-}
-
-void thread3() {
-	while (!b) {
-		if (b) {
-			break;
-		}
-		else {
-			continue;
-		}
-	}
-	printf("thread3\n");
-}
-
+#include <ctime>
 
 int main() {
 
+	std::string a = std::string(1000000, 'a');
+	std::chrono::system_clock::time_point  start, end;
 
-	std::thread th1(thread1);		
-	std::thread th2(thread2);
-	std::thread th3(thread3);
 	
+	start = std::chrono::system_clock::now();
+	std::string test1 = a;
+	end = std::chrono::system_clock::now();
 	
-	th1.join();
-	th2.join();	
-	th3.join();
+	std::chrono::duration<double, std::micro> time = end - start;
+	std::cout << "コピーでかかった時間" << time.count() << "us" << std::endl;
 
+
+
+	std::string&& b = std::string(1000000,'a');
+	std::chrono::system_clock::time_point  start2, end2;
+
+	start2 = std::chrono::system_clock::now();
+	std::string test2 = move(b);
+	end2 = std::chrono::system_clock::now();
+
+	std::chrono::duration<double, std::micro> time2 = end2 - start2;
+	std::cout << "移動でかかった時間" << time2.count() << "us" << std::endl;
 
 	return 0;
 }
